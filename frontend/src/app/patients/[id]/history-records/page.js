@@ -6,7 +6,8 @@ import Link from 'next/link';
 import Navbar from '@/components/common/Navbar';
 import { ArrowLeft, CalendarDays, FileText, UserRound } from 'lucide-react';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000/api';
+const rawApiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = rawApiUrl.endsWith('/') ? rawApiUrl.slice(0, -1) : rawApiUrl;
 
 export default function PatientHistoryRecords() {
   const { id } = useParams();
